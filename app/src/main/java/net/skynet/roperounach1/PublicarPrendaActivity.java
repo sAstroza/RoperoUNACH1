@@ -37,6 +37,18 @@ public class PublicarPrendaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_publicar_prenda);
 
         mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser == null) {
+            // Si no está autenticado, redirige a la pantalla de inicio de sesión
+            Intent loginIntent = new Intent(PublicarPrendaActivity.this, LoginActivity.class);
+            startActivity(loginIntent);
+            finish(); // Cierra PublicarPrendaActivity para que el usuario no pueda volver con el botón de retroceso
+            return;
+        }
+
+
+
+
         prendasRef = FirebaseDatabase.getInstance().getReference("prendas");
         storageRef = FirebaseStorage.getInstance().getReference("imagenes");
 

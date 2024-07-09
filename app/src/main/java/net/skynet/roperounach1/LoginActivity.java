@@ -25,13 +25,16 @@ public class LoginActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         loginButton = findViewById(R.id.loginButton);
-        registerButton = findViewById(R.id.registerButton);
 
         loginButton.setOnClickListener(v -> loginUser());
+
+        registerButton = findViewById(R.id.registerButton); // Asegúrate de tener esta línea
         registerButton.setOnClickListener(v -> {
-            // Redirige a RegisterActivity
             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            finish();
         });
+
+
     }
 
     private void loginUser() {
@@ -41,11 +44,10 @@ public class LoginActivity extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        // Inicia MainActivity si el inicio de sesión es exitoso
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
                     } else {
-                        Toast.makeText(LoginActivity.this, "Login fallido", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Inicio de sesión fallido", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
