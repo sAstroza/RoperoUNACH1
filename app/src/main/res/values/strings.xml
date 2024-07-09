@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">RoperoUNACH1</string>
+    <string name="app_name">Ropero UNACH</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Eliminar</string>
 </resources>
