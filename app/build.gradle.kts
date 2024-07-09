@@ -46,7 +46,7 @@ dependencies {
 
     // RecyclerView
     implementation("androidx.recyclerview:recyclerview:1.2.1")
-
+    implementation ("com.firebaseui:firebase-ui-database:8.0.0")
 
     // Picasso for image loading
     implementation("com.squareup.picasso:picasso:2.71828")
