@@ -80,5 +80,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // Desautenticar al usuario al detener la actividad
+        mAuth.signOut();
+    }
 }
