@@ -9,13 +9,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText emailEditText, passwordEditText;
-    private Button registerButton;
+    private Button registerButton, loginButton;
     private FirebaseAuth mAuth;
 
     @Override
@@ -28,8 +25,15 @@ public class RegisterActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         registerButton = findViewById(R.id.registerButton);
+        loginButton = findViewById(R.id.loginButton);
 
         registerButton.setOnClickListener(v -> registerUser());
+
+        loginButton.setOnClickListener(v -> {
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
 
     private void registerUser() {
@@ -39,12 +43,8 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("usuarios").child(user.getUid());
-                        userRef.setValue(new Usuario(user.getUid(), email));
-
-                        // Redirige a MainActivity después de registrarse
-                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                        Toast.makeText(RegisterActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                         finish();
                     } else {
                         Toast.makeText(RegisterActivity.this, "Registro fallido", Toast.LENGTH_SHORT).show();

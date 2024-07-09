@@ -28,11 +28,13 @@
         android:id="@+id/seleccionarImagenButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#F44336"
         android:text="Seleccionar Imagen" />
 
     <Button
         android:id="@+id/publicarButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#F44336"
         android:text="Publicar" />
 </LinearLayout>

@@ -2,9 +2,8 @@ package net.skynet.roperounach1;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-
+import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -58,10 +57,14 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish(); // Finalizar MainActivity para evitar que el usuario regrese con el botón "Atrás"
         } else {
-            // Usuario autenticado, continuar con la lógica de la aplicación
-            // Por ejemplo, podrías redirigir a VerPrendasActivity u otra actividad principal
-            startActivity(new Intent(MainActivity.this, VerPrendasActivity.class));
-            finish(); // Finalizar MainActivity si deseas que no permanezca en la pila de actividades
+            // Usuario autenticado, mostrar los botones de la actividad principal
+            mostrarBotones();
         }
+    }
+
+    private void mostrarBotones() {
+        verPrendasButton.setVisibility(View.VISIBLE);
+        publicarPrendaButton.setVisibility(View.VISIBLE);
+        verMensajesButton.setVisibility(View.VISIBLE);
     }
 }

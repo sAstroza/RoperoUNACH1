@@ -69,6 +69,12 @@ public class VerPrendasActivity extends AppCompatActivity {
                                         }
                                     });
                         });
+
+                        holder.prendaImageView.setOnClickListener(v -> {
+                            Intent intent = new Intent(VerPrendasActivity.this, FullScreenImageActivity.class);
+                            intent.putExtra("imageUrl", model.getImagenUrl());
+                            startActivity(intent);
+                        });
                     }
 
                     @NonNull

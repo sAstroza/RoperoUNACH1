@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Ropero UNACH</string>
+    <string name="app_name">RoperoUNACH1</string>
     <string name="edit">Editar</string>
     <string name="delete">Eliminar</string>
+    <string name="full_screen_image">Imagen a pantalla completa</string>
+    <!-- Agrega otras cadenas que tengas definidas aquí -->
 </resources>
